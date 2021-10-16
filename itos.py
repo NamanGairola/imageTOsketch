@@ -12,8 +12,7 @@ def dodge(front, back):
 	final_sketch[back == 255] = 255
 	return final_sketch.astype('uint8')
 
-def  sketch():
-	img = r'D:\c.jpg'
+def  sketch(img):
 	ss = imageio.imread(img)
 	gray = rgb2gray(ss)
 	i = 255-gray
@@ -21,5 +20,3 @@ def  sketch():
 	r = dodge(blur, gray)
 	savefilename='sketch.png'
 	cv2.imwrite(savefilename, r)
-	
-sketch()
