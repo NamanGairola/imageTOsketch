@@ -7,12 +7,6 @@ import imageio
 import scipy.ndimage
 import cv2
 
-
-# take image input and assign variable to it
-img = r'D:\c.jpg'
-
-
-
 # function to convert image into sketch
 def rgb2gray(rgb):
 	# 2 dimensional array to convert image to sketch
@@ -30,18 +24,23 @@ def dodge(front, back):
 	# and uint8 is for 8-bit signed integer
 	return final_sketch.astype('uint8')
 
+def  sketch():
 
-ss = imageio.imread(img)
-gray = rgb2gray(ss)
+	# take image input and assign variable to it
+	img = r'D:\c.jpg'
+	ss = imageio.imread(img)
+	gray = rgb2gray(ss)
 
-i = 255-gray
-
-
-# to convert into a blur image
-blur = scipy.ndimage.filters.gaussian_filter(i, sigma=13)
+	i = 255-gray
 
 
-# calling the fuction
-r = dodge(blur, gray)
-savefilename='sketch.png'
-cv2.imwrite(savefilename, r)
+	# to convert into a blur image
+	blur = scipy.ndimage.filters.gaussian_filter(i, sigma=13)
+
+
+	# calling the fuction
+	r = dodge(blur, gray)
+	savefilename='sketch.png'
+	cv2.imwrite(savefilename, r)
+	
+sketch()
