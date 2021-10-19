@@ -12,11 +12,11 @@ def dodge(front, back):
 	final_sketch[back == 255] = 255
 	return final_sketch.astype('uint8')
 
-def  sketch(img):
-	ss = imageio.imread(img)
+def  sketch(imgp):
+	ss = imageio.imread(imgp)
 	gray = rgb2gray(ss)
 	i = 255-gray
 	blur = scipy.ndimage.filters.gaussian_filter(i, sigma=13)
 	r = dodge(blur, gray)
-	savefilename='sketch.png'
+	savefilename='D:/sketch.png'
 	cv2.imwrite(savefilename, r)
