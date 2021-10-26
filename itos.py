@@ -19,6 +19,6 @@ def  sketch(imgp):
 	i = 255-gray
 	blur = scipy.ndimage.filters.gaussian_filter(i, sigma=13)
 	r = dodge(blur, gray)
-
+	cv2.imwrite('chg.png',r)
 def savei(savefilename):
 	cv2.imwrite(savefilename, r)
