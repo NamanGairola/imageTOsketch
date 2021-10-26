@@ -35,14 +35,17 @@ def fsaveimg():
     savepath=filedialog.asksaveasfilename(defaultextension=".png")
     savei(savepath)
 
+bgi=ImageTk.PhotoImage(file="bg.jpg")
+bglabel=Label(root,image=bgi)
 
-Label1=Label(root,text="Change image to sketch",font=('',20))
-frame1 = Frame(root)
+Label1=Label(root,text="Change image to sketch",font=('',20),bg="#ffff00")
+frame1 = Frame(root,bg="#ffff00")
 choosefile = Button(frame1,text="choose\tfile",padx=50,command=fchoosefile)
 convert=Button(frame1,text="convert",padx=50,command=fconvert)
 
-frame2=Frame(root)
+frame2=Frame(root,bg="#ffff00")
 
+bglabel.place(x=0,y=0)
 Label1.pack(pady=50)
 frame1.pack()
 choosefile.grid(row=0,column=0,padx=5)
