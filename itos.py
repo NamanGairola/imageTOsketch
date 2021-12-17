@@ -1,24 +1,22 @@
-import numpy as np
 import imageio
 import scipy.ndimage
-import cv2
-
-def rgb2gray(rgb):
-	return np.dot(rgb[..., :3], [0.2989, 0.5870, .1140])
-
-def dodge(front, back):
-	final_sketch = front*255/(255-back)
-	final_sketch[final_sketch > 255] = 255
-	final_sketch[back == 255] = 255
-	return final_sketch.astype('uint8')
 
 def  sketch(imgp):
 	global r
-	ss = imageio.imread(imgp)
-	gray = rgb2gray(ss)
-	i = 255-gray
-	blur = scipy.ndimage.filters.gaussian_filter(i, sigma=13)
-	r = dodge(blur, gray)
-	cv2.imwrite('chg.png',r)
+	img = imageio.imread(imgp)
+	#converting to grey
+	r=img[:,:,0]
+	g=img[:,:,1]
+	b=img[:,:,2]
+	grey=r*.2989+g*.5870+b*.1140
+	i = 255-grey
+	#blur image
+	blur = scipy.ndimage.filters.gaussian_filter(i,sigma=10)
+	#final image
+	r = blur*255/i
+	r[r>255]=255
+	r=r.astype('uint8')
+	imageio.imwrite('chg.png',r)
+#to save image
 def savei(savefilename):
-	cv2.imwrite(savefilename, r)
+	imageio.imwrite(savefilename,r)

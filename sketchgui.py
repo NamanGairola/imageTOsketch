@@ -7,9 +7,10 @@ root = Tk()
 root.geometry("1000x500")
 saveimg=Button(root)
 
+# function for choosing image file
 def fchoosefile():
     global path
-    path = filedialog.askopenfilename(initialdir="/",title="choose image",filetypes=(("jpeg files","*.jpeg"),("jpg files","*.jpg"),("png files","*.png"),("All files","*.*")))
+    path = filedialog.askopenfilename(initialdir="/",title="choose image",filetypes=(("All files","*.*"),("jpeg files","*.jpeg"),("jpg files","*.jpg"),("png files","*.png")))
     photo1=Image.open(path)
     rzphoto=photo1.resize((300,150),Image.ANTIALIAS)
     fphoto1=ImageTk.PhotoImage(rzphoto)
@@ -17,6 +18,7 @@ def fchoosefile():
     lphoto1.image=fphoto1
     lphoto1.grid(row=0,column=0,padx=5,pady=5)
 
+# function t convert image to sketch and making save button appear
 def fconvert():
     sketch(path)
     global saveimg
@@ -31,20 +33,23 @@ def fconvert():
     saveimg=Button(root,text="save",padx=50,command=fsaveimg)
     saveimg.pack(pady=10)
 
+# function for saving converted image
 def fsaveimg():
     savepath=filedialog.asksaveasfilename(defaultextension=".png")
     savei(savepath)
 
+#background image
 bgi=ImageTk.PhotoImage(file="bg.jpg")
 bglabel=Label(root,image=bgi)
 
+# labels
 Label1=Label(root,text="Change image to sketch",font=('',20),bg="#ffff00")
 frame1 = Frame(root,bg="#ffff00")
 choosefile = Button(frame1,text="choose\tfile",padx=50,command=fchoosefile)
 convert=Button(frame1,text="convert",padx=50,command=fconvert)
 
 frame2=Frame(root,bg="#ffff00")
-
+#putting label and frame on screen
 bglabel.place(x=0,y=0)
 Label1.pack(pady=50)
 frame1.pack()
