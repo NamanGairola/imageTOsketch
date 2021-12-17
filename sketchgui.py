@@ -18,7 +18,7 @@ def fchoosefile():
     lphoto1.image=fphoto1
     lphoto1.grid(row=0,column=0,padx=5,pady=5)
 
-# function t convert image to sketch and making save button appear
+# function to convert image to sketch and making save button appear
 def fconvert():
     sketch(path)
     global saveimg
