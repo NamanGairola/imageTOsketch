@@ -1,16 +1,23 @@
+'''
+Name - Naman Gairola
+Section - A
+Class Roll No. - 28
+University Roll No. - 2014743
+Course - B.Tech CSE
+'''
 from tkinter import *
 from itos import *
 from tkinter import filedialog
 from PIL import ImageTk,Image
 
-root = Tk()
+root=Tk()
 root.geometry("1000x500")
 saveimg=Button(root)
 
 # function for choosing image file
 def fchoosefile():
     global path
-    path = filedialog.askopenfilename(initialdir="/",title="choose image",filetypes=(("All files","*.*"),("jpeg files","*.jpeg"),("jpg files","*.jpg"),("png files","*.png")))
+    path=filedialog.askopenfilename(initialdir="/",title="choose image",filetypes=(("jpeg files","*.jpeg"),("jpg files","*.jpg"),("png files","*.png")))
     photo1=Image.open(path)
     rzphoto=photo1.resize((300,150),Image.ANTIALIAS)
     fphoto1=ImageTk.PhotoImage(rzphoto)
@@ -42,10 +49,10 @@ def fsaveimg():
 bgi=ImageTk.PhotoImage(file="bg.jpg")
 bglabel=Label(root,image=bgi)
 
-# labels
-Label1=Label(root,text="Change image to sketch",font=('',20),bg="#ffff00")
-frame1 = Frame(root,bg="#ffff00")
-choosefile = Button(frame1,text="choose\tfile",padx=50,command=fchoosefile)
+# labels and buttons
+Label1=Label(root,text="Convert image to sketch",font=('',20),bg="#ffff00")
+frame1=Frame(root,bg="#ffff00")
+choosefile=Button(frame1,text="choose\tfile",padx=50,command=fchoosefile)
 convert=Button(frame1,text="convert",padx=50,command=fconvert)
 
 frame2=Frame(root,bg="#ffff00")
@@ -56,4 +63,4 @@ frame1.pack()
 choosefile.grid(row=0,column=0,padx=5)
 convert.grid(row=0,column=1,padx=5)
 frame2.pack()
-root = mainloop()
+root.mainloop()
