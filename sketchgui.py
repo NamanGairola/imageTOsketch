@@ -17,7 +17,7 @@ saveimg=Button(root)
 # function for choosing image file
 def fchoosefile():
     global path
-    path=filedialog.askopenfilename(initialdir="/",title="choose image",filetypes=(("jpeg files","*.jpeg"),("jpg files","*.jpg"),("png files","*.png")))
+    path=filedialog.askopenfilename(initialdir="/",title="choose image",filetypes=(("jpg files","*.jpg"),("jpeg files","*.jpeg"),("png files","*.png")))
     photo1=Image.open(path)
     rzphoto=photo1.resize((300,150),Image.ANTIALIAS)
     fphoto1=ImageTk.PhotoImage(rzphoto)
@@ -50,7 +50,8 @@ bgi=ImageTk.PhotoImage(file="bg.jpg")
 bglabel=Label(root,image=bgi)
 
 # labels and buttons
-Label1=Label(root,text="Convert image to sketch",font=('',20),bg="#ffff00")
+Label1=Label(root,text="Convert Image To Sketch",font=('Times',30,"bold"),bg="#ffff00")
+restrict=Label(root,text="Ensure your image if of format .jpg/.jpeg/.png/ and size do not exceed 20MB",font=('',10),bg="#ffff00",fg='red')
 frame1=Frame(root,bg="#ffff00")
 choosefile=Button(frame1,text="choose\tfile",padx=50,command=fchoosefile)
 convert=Button(frame1,text="convert",padx=50,command=fconvert)
@@ -58,7 +59,8 @@ convert=Button(frame1,text="convert",padx=50,command=fconvert)
 frame2=Frame(root,bg="#ffff00")
 #putting label and frame on screen
 bglabel.place(x=0,y=0)
-Label1.pack(pady=50)
+Label1.pack(pady=(60,5))
+restrict.pack(pady=10)
 frame1.pack()
 choosefile.grid(row=0,column=0,padx=5)
 convert.grid(row=0,column=1,padx=5)

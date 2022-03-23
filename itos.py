@@ -18,6 +18,7 @@ def sketch(imgp):
 	g=img[:,:,1]
 	b=img[:,:,2]
 	grey=r*.2989+g*.5870+b*.1140
+	for faster use numpy
 	'''
 	grey=np.dot(img[..., :3], [0.2989, 0.5870, .1140])
 	inv=255-grey
